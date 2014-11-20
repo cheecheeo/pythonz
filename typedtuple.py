@@ -24,6 +24,16 @@ def typedtuple(typename, funFieldNames):
   >>> Baz = typedtuple('Baz', [])
   >>> Baz()
   Baz()
+
+  >>> Err = typedtuple('Err', [(int, 'my_int'), (float, 'my_float')])
+  >>> Err('hello', 'world')
+  Traceback (most recent call last):
+    ...
+  ValueError: invalid literal for int() with base 10: 'hello'
+  >>> Err(42, 'world')
+  Traceback (most recent call last):
+    ...
+  ValueError: could not convert string to float: world
   """
 
   def functionify(stringOrTuple):
